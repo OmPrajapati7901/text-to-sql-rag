@@ -1,0 +1,16 @@
+{
+  "metadataAttributes": {
+    "object_id": "global.exclude_internal_customers",
+    "object_type": "rule",
+    "domain": "commerce",
+    "tenant_id": "tenant-demo",
+    "access_scope": "finance-analysts-demo",
+    "snapshot_id": "catalog-demo-42",
+    "source_version": "2",
+    "publication_status": "approved",
+    "canonical_ref": "registry:global.exclude_internal_customers@2",
+    "source_hash": "3965e76c8ac289c9d0259deb4f23ff0f16e25e8df8bc2595b1736bd90b52c360",
+    "language": "en",
+    "is_synthetic": true
+  }
+}

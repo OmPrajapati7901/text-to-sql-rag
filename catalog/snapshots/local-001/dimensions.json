@@ -1,0 +1,26 @@
+[
+  {
+    "access_scope": "commerce-analysts",
+    "aliases": [
+      "region",
+      "customer region",
+      "region at order",
+      "territory"
+    ],
+    "column": "warehouse.commerce.customer_history.region_name",
+    "description": "The customer's region as of the order event time.",
+    "domain": "commerce",
+    "entity_role": "purchasing_customer",
+    "id": "customer.region_at_order",
+    "name": "Customer region at order",
+    "object_type": "dimension",
+    "owner": null,
+    "publication_status": "approved",
+    "required_relationship_ref": "commerce.orders_customers_asof@2",
+    "snapshot_id": "local-001",
+    "source_hash": "c8828f06836a7a8528346dea6c19eb4a00b754a8c66ee964e45f7878571047cd",
+    "source_version": "2",
+    "temporal_binding": "at_fact_event",
+    "version": 2
+  }
+]

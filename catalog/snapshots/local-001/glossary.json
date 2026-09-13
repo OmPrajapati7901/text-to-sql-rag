@@ -1,0 +1,68 @@
+[
+  {
+    "access_scope": "commerce-analysts",
+    "definition": "The official recognized order revenue metric for commerce.",
+    "domain": "commerce",
+    "id": "glossary.revenue",
+    "maps_to": [
+      "finance.revenue@7"
+    ],
+    "object_type": "glossary",
+    "owner": null,
+    "publication_status": "approved",
+    "snapshot_id": "local-001",
+    "source_hash": "e4a15a7591e06f96885ceab1723961a61df5d0c2365e595011137b757c18ffae",
+    "source_version": "1",
+    "synonyms": [
+      "sales",
+      "top line",
+      "turnover",
+      "recognized revenue"
+    ],
+    "term": "revenue",
+    "version": 1
+  },
+  {
+    "access_scope": "commerce-analysts",
+    "definition": "Customer region, attributed as of the order event time.",
+    "domain": "commerce",
+    "id": "glossary.region",
+    "maps_to": [
+      "customer.region_at_order@2"
+    ],
+    "object_type": "glossary",
+    "owner": null,
+    "publication_status": "approved",
+    "snapshot_id": "local-001",
+    "source_hash": "6fd207cd43439b7c625f3672e47ec652851ad8941d9c2b35df38f91838fb0ac5",
+    "source_version": "1",
+    "synonyms": [
+      "territory",
+      "geography",
+      "area"
+    ],
+    "term": "region",
+    "version": 1
+  },
+  {
+    "access_scope": "commerce-analysts",
+    "definition": "Count of eligible completed orders.",
+    "domain": "commerce",
+    "id": "glossary.order_count",
+    "maps_to": [
+      "commerce.order_count@1"
+    ],
+    "object_type": "glossary",
+    "owner": null,
+    "publication_status": "approved",
+    "snapshot_id": "local-001",
+    "source_hash": "77908b3db40c85295a415fb62748488fefe182f1428d700811ea3de0e3198929",
+    "source_version": "1",
+    "synonyms": [
+      "number of orders",
+      "order volume"
+    ],
+    "term": "order count",
+    "version": 1
+  }
+]

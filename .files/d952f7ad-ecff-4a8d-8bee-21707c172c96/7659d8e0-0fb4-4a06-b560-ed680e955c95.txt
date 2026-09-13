@@ -1,0 +1,28 @@
+SELECT
+  DATE_TRUNC('MONTH', "t0"."ordered_at") AS "month",
+  "t1"."region_name" AS "region_at_order",
+  SUM("t0"."order_amount_usd") AS "revenue_usd"
+FROM "warehouse"."commerce"."orders" AS "t0"
+INNER JOIN "warehouse"."commerce"."customer_history" AS "t1"
+  ON "t0"."tenant_id" = "t1"."tenant_id"
+  AND "t0"."customer_id" = "t1"."customer_id"
+  AND "t0"."ordered_at" >= "t1"."valid_from"
+  AND (
+    "t0"."ordered_at" < "t1"."valid_to" OR "t1"."valid_to" IS NULL
+  )
+WHERE
+  "t0"."tenant_id" = ?
+  AND "t1"."tenant_id" = ?
+  AND "t0"."ordered_at" >= ?
+  AND "t0"."ordered_at" < ?
+  AND "t0"."order_status" = ?
+  AND "t0"."is_test" = ?
+  AND "t0"."refund_status" <> ?
+  AND "t1"."is_internal" = ?
+  AND "t1"."is_test_customer" = ?
+GROUP BY
+  DATE_TRUNC('MONTH', "t0"."ordered_at"),
+  "t1"."region_name"
+ORDER BY
+  "month" ASC,
+  "region_at_order" ASC

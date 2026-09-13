@@ -1,0 +1,15 @@
+{
+  "json_blocks": 2,
+  "python_blocks": 2,
+  "section_count": 10,
+  "words": 4432,
+  "checks": [
+    "mapping and record keys consistent",
+    "lexical and vector filters identical",
+    "query fields mapped",
+    "invalid and zero vectors rejected",
+    "missing filter rejected",
+    "RRF ordering and duplicate handling"
+  ],
+  "cluster_tested": false
+}

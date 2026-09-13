@@ -1,0 +1,46 @@
+{
+  "knowledgeBaseId": "DEMO123456",
+  "retrievalQuery": {
+    "text": "Revenue by current customer region for January 2026"
+  },
+  "retrievalConfiguration": {
+    "vectorSearchConfiguration": {
+      "numberOfResults": 40,
+      "overrideSearchType": "HYBRID",
+      "filter": {
+        "andAll": [
+          {
+            "equals": {
+              "key": "tenant_id",
+              "value": "tenant-demo"
+            }
+          },
+          {
+            "equals": {
+              "key": "access_scope",
+              "value": "finance-analysts-demo"
+            }
+          },
+          {
+            "equals": {
+              "key": "snapshot_id",
+              "value": "catalog-demo-42"
+            }
+          },
+          {
+            "equals": {
+              "key": "publication_status",
+              "value": "approved"
+            }
+          },
+          {
+            "equals": {
+              "key": "object_type",
+              "value": "metric"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

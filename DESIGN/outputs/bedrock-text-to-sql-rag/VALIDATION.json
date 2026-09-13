@@ -1,0 +1,7 @@
+{
+  "source_documents": 15,
+  "metadata_sidecars": 15,
+  "retrieval_tests_passed": 7,
+  "json_and_python_examples_checked": true,
+  "live_aws_tested": false
+}

@@ -1,0 +1,197 @@
+[
+  {
+    "access_scope": "finance-analysts",
+    "additivity": {
+      "disjoint_orders": "additive",
+      "overlapping_product_groups": "not_additive"
+    },
+    "aliases": [
+      "revenue",
+      "recognized order revenue",
+      "sales revenue",
+      "total revenue"
+    ],
+    "allowed_dimensions": [
+      "customer.region_at_order"
+    ],
+    "base_entity": "commerce.order",
+    "base_grain": [
+      "warehouse.commerce.orders.tenant_id",
+      "warehouse.commerce.orders.order_id"
+    ],
+    "base_table": "warehouse.commerce.orders",
+    "dependency_refs": [
+      "warehouse.commerce.orders@3",
+      "commerce.orders_customers_asof@2"
+    ],
+    "description": "Sum of eligible order amounts in USD at order grain.",
+    "domain": "finance",
+    "empty_set_policy": "no_matching_data",
+    "expression": {
+      "kind": "aggregate",
+      "op": "sum",
+      "operand": {
+        "column_ref": "warehouse.commerce.orders.order_amount_usd",
+        "kind": "column"
+      }
+    },
+    "id": "finance.revenue",
+    "missing_groups": "omit",
+    "name": "Revenue",
+    "object_type": "metric",
+    "owner": null,
+    "population": {
+      "args": [
+        {
+          "kind": "compare",
+          "left": {
+            "column_ref": "warehouse.commerce.orders.order_status",
+            "kind": "column"
+          },
+          "op": "eq",
+          "right": {
+            "kind": "enum",
+            "member": "completed",
+            "value_set_ref": "values.order_status@2"
+          }
+        },
+        {
+          "kind": "compare",
+          "left": {
+            "column_ref": "warehouse.commerce.orders.is_test",
+            "kind": "column"
+          },
+          "op": "eq",
+          "right": {
+            "kind": "literal",
+            "type": "boolean",
+            "value": false
+          }
+        },
+        {
+          "kind": "compare",
+          "left": {
+            "column_ref": "warehouse.commerce.orders.refund_status",
+            "kind": "column"
+          },
+          "op": "ne",
+          "right": {
+            "kind": "enum",
+            "member": "fully_refunded",
+            "value_set_ref": "values.refund_status@1"
+          }
+        }
+      ],
+      "kind": "bool",
+      "op": "and"
+    },
+    "publication_status": "approved",
+    "required_rule_refs": [
+      "global.exclude_internal_customers@2"
+    ],
+    "snapshot_id": "local-001",
+    "source_hash": "00a1b5e27b67a3df4ef0c106254713720f39342cf6c444f786cb758f9c1155f8",
+    "source_version": "7",
+    "supersedes": "finance.revenue@6",
+    "time": {
+      "calendar_ref": "calendar.gregorian@1",
+      "grains": [
+        "day",
+        "month",
+        "quarter",
+        "year"
+      ],
+      "time_column": "warehouse.commerce.orders.ordered_at",
+      "timezone": "UTC"
+    },
+    "unit": "USD",
+    "version": 7
+  },
+  {
+    "access_scope": "commerce-analysts",
+    "additivity": {},
+    "aliases": [
+      "order count",
+      "number of orders",
+      "orders"
+    ],
+    "allowed_dimensions": [
+      "customer.region_at_order"
+    ],
+    "base_entity": "commerce.order",
+    "base_grain": [
+      "warehouse.commerce.orders.tenant_id",
+      "warehouse.commerce.orders.order_id"
+    ],
+    "base_table": "warehouse.commerce.orders",
+    "dependency_refs": [
+      "warehouse.commerce.orders@3"
+    ],
+    "description": "Count of eligible orders at order grain.",
+    "domain": "commerce",
+    "empty_set_policy": "no_matching_data",
+    "expression": {
+      "kind": "aggregate",
+      "op": "count",
+      "operand": null
+    },
+    "id": "commerce.order_count",
+    "missing_groups": "omit",
+    "name": "Order count",
+    "object_type": "metric",
+    "owner": null,
+    "population": {
+      "args": [
+        {
+          "kind": "compare",
+          "left": {
+            "column_ref": "warehouse.commerce.orders.order_status",
+            "kind": "column"
+          },
+          "op": "eq",
+          "right": {
+            "kind": "enum",
+            "member": "completed",
+            "value_set_ref": "values.order_status@2"
+          }
+        },
+        {
+          "kind": "compare",
+          "left": {
+            "column_ref": "warehouse.commerce.orders.is_test",
+            "kind": "column"
+          },
+          "op": "eq",
+          "right": {
+            "kind": "literal",
+            "type": "boolean",
+            "value": false
+          }
+        }
+      ],
+      "kind": "bool",
+      "op": "and"
+    },
+    "publication_status": "approved",
+    "required_rule_refs": [
+      "global.exclude_internal_customers@2"
+    ],
+    "snapshot_id": "local-001",
+    "source_hash": "a144762f2e85187c8550898cd71ca9f596b36631f8d65a3d7404f6d6f631afbc",
+    "source_version": "1",
+    "supersedes": null,
+    "time": {
+      "calendar_ref": "calendar.gregorian@1",
+      "grains": [
+        "day",
+        "month",
+        "quarter",
+        "year"
+      ],
+      "time_column": "warehouse.commerce.orders.ordered_at",
+      "timezone": "UTC"
+    },
+    "unit": null,
+    "version": 1
+  }
+]

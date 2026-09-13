@@ -1,0 +1,147 @@
+{
+  "policy_epoch": 1,
+  "principals": [
+    {
+      "principal_id": "analyst_full",
+      "tenant_id": "tenant-demo",
+      "purpose": "analytics",
+      "domains": [
+        "commerce",
+        "finance",
+        "global"
+      ],
+      "access_scopes": [
+        "commerce-analysts",
+        "finance-analysts",
+        "all"
+      ],
+      "grants": {
+        "discover": [
+          "warehouse.commerce.*",
+          "warehouse.finance.*",
+          "finance.*",
+          "commerce.*",
+          "customer.*",
+          "global.*",
+          "security.*",
+          "values.*",
+          "domain.*",
+          "glossary.*",
+          "quality.*",
+          "calendar.*"
+        ],
+        "read": [
+          "warehouse.commerce.*",
+          "warehouse.finance.*"
+        ],
+        "use_in_predicate": [
+          "warehouse.commerce.*",
+          "warehouse.finance.*"
+        ],
+        "execute_metric": [
+          "finance.revenue",
+          "commerce.order_count"
+        ],
+        "disclose": [
+          "warehouse.commerce.*",
+          "warehouse.finance.*",
+          "finance.*",
+          "commerce.*",
+          "customer.*"
+        ]
+      },
+      "denies": {}
+    },
+    {
+      "principal_id": "analyst_restricted",
+      "tenant_id": "tenant-demo",
+      "purpose": "analytics",
+      "domains": [
+        "commerce",
+        "global"
+      ],
+      "access_scopes": [
+        "commerce-analysts",
+        "all"
+      ],
+      "grants": {
+        "discover": [
+          "warehouse.commerce.*",
+          "finance.*",
+          "commerce.*",
+          "customer.*",
+          "global.*",
+          "security.*",
+          "values.*",
+          "domain.*",
+          "glossary.*",
+          "quality.*",
+          "calendar.*"
+        ],
+        "read": [
+          "warehouse.commerce.*"
+        ],
+        "use_in_predicate": [
+          "warehouse.commerce.*"
+        ],
+        "execute_metric": [
+          "commerce.order_count"
+        ],
+        "disclose": [
+          "warehouse.commerce.*",
+          "commerce.*",
+          "customer.*"
+        ]
+      },
+      "denies": {
+        "read": [
+          "warehouse.commerce.orders.order_amount_usd"
+        ],
+        "discover": [
+          "warehouse.finance.*"
+        ]
+      }
+    },
+    {
+      "principal_id": "analyst_other_tenant",
+      "tenant_id": "tenant-other",
+      "purpose": "analytics",
+      "domains": [
+        "commerce"
+      ],
+      "access_scopes": [
+        "commerce-analysts-other"
+      ],
+      "grants": {
+        "discover": [
+          "warehouse.commerce.*",
+          "commerce.*",
+          "customer.*",
+          "global.*",
+          "values.*",
+          "domain.*",
+          "glossary.*",
+          "quality.*",
+          "calendar.*",
+          "finance.*"
+        ],
+        "read": [
+          "warehouse.commerce.*"
+        ],
+        "use_in_predicate": [
+          "warehouse.commerce.*"
+        ],
+        "execute_metric": [
+          "finance.revenue"
+        ],
+        "disclose": [
+          "warehouse.commerce.*",
+          "commerce.*",
+          "customer.*",
+          "finance.*"
+        ]
+      },
+      "denies": {}
+    }
+  ]
+}

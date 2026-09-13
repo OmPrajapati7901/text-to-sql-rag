@@ -1,0 +1,16 @@
+{
+  "metadataAttributes": {
+    "object_id": "commerce.orders_customers",
+    "object_type": "relationship",
+    "domain": "commerce",
+    "tenant_id": "tenant-demo",
+    "access_scope": "finance-analysts-demo",
+    "snapshot_id": "catalog-demo-42",
+    "source_version": "2",
+    "publication_status": "approved",
+    "canonical_ref": "registry:commerce.orders_customers@2",
+    "source_hash": "f451b4a467d88e5a765be28d4dafc13c33f121e2ae42994e043c9b1516729217",
+    "language": "en",
+    "is_synthetic": true
+  }
+}

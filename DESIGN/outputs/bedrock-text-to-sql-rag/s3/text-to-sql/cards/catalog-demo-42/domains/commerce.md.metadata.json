@@ -1,0 +1,16 @@
+{
+  "metadataAttributes": {
+    "object_id": "domain.commerce",
+    "object_type": "domain",
+    "domain": "commerce",
+    "tenant_id": "tenant-demo",
+    "access_scope": "finance-analysts-demo",
+    "snapshot_id": "catalog-demo-42",
+    "source_version": "1",
+    "publication_status": "approved",
+    "canonical_ref": "registry:domain.commerce@1",
+    "source_hash": "8cc226b18ef5f8cfb75f92453a47f49118381e64d552e8754b2a27eb3a7bc5bb",
+    "language": "en",
+    "is_synthetic": true
+  }
+}

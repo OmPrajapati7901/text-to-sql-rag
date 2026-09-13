@@ -1,0 +1,16 @@
+{
+  "metadataAttributes": {
+    "object_id": "warehouse.commerce.orders.is_test",
+    "object_type": "column",
+    "domain": "commerce",
+    "tenant_id": "tenant-demo",
+    "access_scope": "finance-analysts-demo",
+    "snapshot_id": "catalog-demo-42",
+    "source_version": "3",
+    "publication_status": "approved",
+    "canonical_ref": "registry:warehouse.commerce.orders.is_test@3",
+    "source_hash": "972c314d2baf5143e7861dfc6cf83e0058f9b5679485ac47ac4ced583296cd91",
+    "language": "en",
+    "is_synthetic": true
+  }
+}

@@ -1,0 +1,81 @@
+[project]
+name = "texttosql"
+version = "0.1.0"
+description = "Governed text-to-SQL: a semantic query compiler orchestrated by LangGraph"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "chainlit>=2.12,<3",
+    "pydantic>=2.9",
+    "sqlglot>=25.0",
+    "duckdb>=1.1",
+    "langgraph>=0.2.50",
+    "langgraph-checkpoint-sqlite>=2.0",
+    "langsmith>=0.12,<1",
+    "openai>=1.50",
+    "httpx>=0.27",
+    "opensearch-py>=2.7",
+    "numpy>=2.0",
+    "fastapi>=0.115",
+    "uvicorn>=0.32",
+    "python-dotenv>=1.0",
+    "structlog>=24.4",
+    "typer>=0.15",
+    "pytz>=2024.2",
+]
+
+[project.scripts]
+ttsql = "app.cli:app"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3",
+    "pytest-asyncio>=0.24",
+    "ruff>=0.8",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["app", "ingestion"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+markers = [
+    "unit: no external services required",
+    "contract: provider contract suite, runs against every provider",
+    "opensearch: requires a live OpenSearch at localhost:9200",
+    "llm: requires a live OmniRoute endpoint",
+    "e2e: full graph, requires DuckDB fixtures",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM", "RUF", "PL"]
+ignore = [
+    # Fail-closed health checks and defensive catalog lookups catch broad exceptions on
+    # purpose: a probe that raises must report "unavailable", never propagate.
+    "BLE001",
+    "PLR0911",  # explicit early returns per terminal branch are the point
+    "PLR0912",
+    "PLR0913",
+    "PLR0915",
+    "PLR2004",
+    # Deferred imports are deliberate: they break import cycles between the graph nodes and
+    # the services they call, and keep optional backends (OpenSearch, the LLM router) from
+    # being imported when they are not configured.
+    "PLC0415",
+    "PLR0917",
+]
+
+[tool.ruff.lint.per-file-ignores]
+# load_dotenv() must run before any module-level client reads its configuration.
+"app/cli.py" = ["E402"]
+"app/runtime.py" = ["E402"]
+"tests/*" = ["PLR2004", "S101", "E402"]

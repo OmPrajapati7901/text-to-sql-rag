@@ -1,0 +1,21 @@
+{
+  "snapshot_id": "local-001",
+  "published_at": "2026-09-13T13:58:39.289805Z",
+  "dialect": "duckdb",
+  "object_count": 68,
+  "manifest_hash": "2c3a2d980ee6bd6c207894890faeac2eef3690db8edf836d574cba3aa0760d89",
+  "schema_fingerprint": "cb0de115d768b54a85b034f3839543847de4381375b2eac7a7ab9be33ebf863b",
+  "state": "approved",
+  "notes": "Demo commerce catalog derived from DESIGN/outputs/catalog-demo-42.",
+  "file_hashes": {
+    "domains": "a0e15322ae6b85d6bccc616d50da36b7631d270ccc576c975636a832738ff916",
+    "tables": "7c4bce2df21885591f98e3c36a7b80e2a89b9d106911e95aec093d6456b8b682",
+    "columns": "2a64d1419240acf904e443fc8d1c4f6a600584c5d7fa4537dc085d869b3ec7e8",
+    "relationships": "52a61c45161127d2d1a68402cfbba2015c90122e47088fb79e06ee109416ae45",
+    "value_sets": "86a2e15d3df1c67789d25842c95403ea187f2961a06745de9613fc7b0dfa2486",
+    "metrics": "044045bc713dc5ded2e4cf3dbbfdedc9ecb8e8537021b5292ab082e05fddb7a4",
+    "dimensions": "1d76a023bf66477de53aea580d2d6d479a21ef31241bc63b29b04a21a517573f",
+    "rules": "3fac2045a7b6e31806bb7926412bcfd09182b5e2d2fc08b9e93dddce11690ab8",
+    "glossary": "404a8290e79972677b4e59d7576f2d47240636319f48c676d359ee19b6e1d805"
+  }
+}

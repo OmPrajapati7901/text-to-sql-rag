@@ -1,0 +1,16 @@
+{
+  "metadataAttributes": {
+    "object_id": "documentation.revenue_methodology",
+    "object_type": "documentation",
+    "domain": "commerce",
+    "tenant_id": "tenant-demo",
+    "access_scope": "finance-analysts-demo",
+    "snapshot_id": "catalog-demo-42",
+    "source_version": "1",
+    "publication_status": "approved",
+    "canonical_ref": "registry:documentation.revenue_methodology@1",
+    "source_hash": "2269b10de2ebe2ebc34eaad72576d300701c12c857219073d879d25599a88f1d",
+    "language": "en",
+    "is_synthetic": true
+  }
+}

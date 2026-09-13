@@ -1,0 +1,16 @@
+{
+  "metadataAttributes": {
+    "object_id": "finance.revenue",
+    "object_type": "metric",
+    "domain": "commerce",
+    "tenant_id": "tenant-demo",
+    "access_scope": "finance-analysts-demo",
+    "snapshot_id": "catalog-demo-42",
+    "source_version": "7",
+    "publication_status": "approved",
+    "canonical_ref": "registry:finance.revenue@7",
+    "source_hash": "d61fe0fa6f927d0f566ea7225b77383652ac5699c87d6a05b763ba4ce1dd4815",
+    "language": "en",
+    "is_synthetic": true
+  }
+}

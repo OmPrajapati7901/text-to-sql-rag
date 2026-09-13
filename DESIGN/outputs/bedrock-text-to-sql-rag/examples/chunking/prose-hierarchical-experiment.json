@@ -1,0 +1,16 @@
+{
+  "chunkingConfiguration": {
+    "chunkingStrategy": "HIERARCHICAL",
+    "hierarchicalChunkingConfiguration": {
+      "levelConfigurations": [
+        {
+          "maxTokens": 1200
+        },
+        {
+          "maxTokens": 300
+        }
+      ],
+      "overlapTokens": 50
+    }
+  }
+}

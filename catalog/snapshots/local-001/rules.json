@@ -1,0 +1,187 @@
+[
+  {
+    "access_scope": "all",
+    "activation": {
+      "entity": null,
+      "metric_ref": null,
+      "object_id": null,
+      "op": "any_scan_with_tag",
+      "slot": null,
+      "tag": "tenant_scoped"
+    },
+    "allowed_override": null,
+    "description": "Every scan of a tenant-scoped relation is bound to the trusted tenant.",
+    "domain": "global",
+    "effect": {
+      "op": "require_tenant_scope",
+      "placement": "before_aggregation",
+      "predicate": null,
+      "required_relationship_ref": null,
+      "required_tables": [],
+      "slot": null,
+      "slot_value": null,
+      "temporal_binding": null,
+      "unmatched_policy": "quality_failure"
+    },
+    "failure": "deny",
+    "id": "security.tenant_scope",
+    "name": "Tenant isolation",
+    "object_type": "rule",
+    "overrideable": false,
+    "owner": null,
+    "priority_within_class": 0,
+    "publication_status": "approved",
+    "rule_class": "security_obligation",
+    "snapshot_id": "local-001",
+    "source_hash": "6d00233d9e6bf12abbe1ec85d27c95ce15bfbdda296d733c386137fb0685b0f1",
+    "source_version": "5",
+    "version": 5
+  },
+  {
+    "access_scope": "all",
+    "activation": {
+      "entity": "commerce.order",
+      "metric_ref": null,
+      "object_id": null,
+      "op": "population_contains_entity",
+      "slot": null,
+      "tag": null
+    },
+    "allowed_override": null,
+    "description": "Analytics include only external, non-test customers. This rule can introduce the customer relation even when no customer dimension was requested.",
+    "domain": "global",
+    "effect": {
+      "op": "require_population_filter",
+      "placement": "before_aggregation",
+      "predicate": {
+        "args": [
+          {
+            "kind": "compare",
+            "left": {
+              "column_ref": "warehouse.commerce.customer_history.is_internal",
+              "kind": "column"
+            },
+            "op": "eq",
+            "right": {
+              "kind": "literal",
+              "type": "boolean",
+              "value": false
+            }
+          },
+          {
+            "kind": "compare",
+            "left": {
+              "column_ref": "warehouse.commerce.customer_history.is_test_customer",
+              "kind": "column"
+            },
+            "op": "eq",
+            "right": {
+              "kind": "literal",
+              "type": "boolean",
+              "value": false
+            }
+          }
+        ],
+        "kind": "bool",
+        "op": "and"
+      },
+      "required_relationship_ref": "commerce.orders_customers_asof@2",
+      "required_tables": [
+        "warehouse.commerce.customer_history"
+      ],
+      "slot": null,
+      "slot_value": null,
+      "temporal_binding": "at_fact_event",
+      "unmatched_policy": "quality_failure"
+    },
+    "failure": "block_metric",
+    "id": "global.exclude_internal_customers",
+    "name": "Exclude internal customers",
+    "object_type": "rule",
+    "overrideable": false,
+    "owner": null,
+    "priority_within_class": 10,
+    "publication_status": "approved",
+    "rule_class": "mandatory_business_population",
+    "snapshot_id": "local-001",
+    "source_hash": "9c408708792012742917477d30ce9a361656890d49f9819656c93ce86cd2f92c",
+    "source_version": "2",
+    "version": 2
+  },
+  {
+    "access_scope": "commerce-analysts",
+    "activation": {
+      "entity": null,
+      "metric_ref": null,
+      "object_id": "warehouse.commerce.order_items",
+      "op": "uses_table",
+      "slot": null,
+      "tag": null
+    },
+    "allowed_override": null,
+    "description": "Summing the order header amount after expanding to line items double counts. Requires a semi-join or an approved allocation.",
+    "domain": "commerce",
+    "effect": {
+      "op": "require_semijoin_or_allocation",
+      "placement": "before_aggregation",
+      "predicate": null,
+      "required_relationship_ref": null,
+      "required_tables": [],
+      "slot": null,
+      "slot_value": null,
+      "temporal_binding": null,
+      "unmatched_policy": "quality_failure"
+    },
+    "failure": "clarify_or_unavailable",
+    "id": "commerce.order_item_revenue_guard",
+    "name": "Order item revenue guard",
+    "object_type": "rule",
+    "overrideable": false,
+    "owner": null,
+    "priority_within_class": 20,
+    "publication_status": "approved",
+    "rule_class": "semantic_requirement",
+    "snapshot_id": "local-001",
+    "source_hash": "180061d01e51bd243b05bd634c606087714a0e4fc3f3a7fc9ed96ffd5dc38772",
+    "source_version": "2",
+    "version": 2
+  },
+  {
+    "access_scope": "commerce-analysts",
+    "activation": {
+      "entity": null,
+      "metric_ref": null,
+      "object_id": null,
+      "op": "slot_unset",
+      "slot": "time.timezone",
+      "tag": null
+    },
+    "allowed_override": "explicit_supported_user_timezone",
+    "description": "Commerce reporting defaults to UTC when the user states no timezone.",
+    "domain": "commerce",
+    "effect": {
+      "op": "set_slot",
+      "placement": "before_aggregation",
+      "predicate": null,
+      "required_relationship_ref": null,
+      "required_tables": [],
+      "slot": "time.timezone",
+      "slot_value": "UTC",
+      "temporal_binding": null,
+      "unmatched_policy": "quality_failure"
+    },
+    "failure": "warn",
+    "id": "commerce.reporting_timezone",
+    "name": "Reporting timezone",
+    "object_type": "rule",
+    "overrideable": true,
+    "owner": null,
+    "priority_within_class": 50,
+    "publication_status": "approved",
+    "rule_class": "default",
+    "snapshot_id": "local-001",
+    "source_hash": "7ff1a32fa0a93b280b97efbaa9386ea805758cea5bd7c9ebcecc105f757149ba",
+    "source_version": "1",
+    "version": 1
+  }
+]

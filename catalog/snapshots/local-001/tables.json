@@ -1,0 +1,534 @@
+[
+  {
+    "access_scope": "commerce-analysts",
+    "approved_relationships": [
+      "commerce.orders_customers_asof@2",
+      "commerce.order_items@2"
+    ],
+    "business_description": "Customer orders used for the governed Revenue metric.",
+    "description": "Order headers; one row per tenant and order.",
+    "domain": "commerce",
+    "freshness_watermark": null,
+    "grain": [
+      "warehouse.commerce.orders.tenant_id",
+      "warehouse.commerce.orders.order_id"
+    ],
+    "id": "warehouse.commerce.orders",
+    "is_certified": true,
+    "key_evidence": "enforced",
+    "metric_refs": [
+      "finance.revenue@7"
+    ],
+    "name": "orders",
+    "object_type": "table",
+    "owner": null,
+    "physical": {
+      "database": "warehouse",
+      "name": "orders",
+      "schema_name": "commerce"
+    },
+    "primary_key": [
+      "warehouse.commerce.orders.tenant_id",
+      "warehouse.commerce.orders.order_id"
+    ],
+    "prohibited_usages": [
+      "sum_order_amount_after_item_expansion"
+    ],
+    "publication_status": "approved",
+    "rule_refs": [
+      "security.tenant_scope@5",
+      "global.exclude_internal_customers@2"
+    ],
+    "snapshot_id": "local-001",
+    "source_hash": "36a5020abb2d19ceee1734560ddd6bff638ea5404b66668edd4e9936d9deff7c",
+    "source_version": "3",
+    "synonyms": [
+      "order headers",
+      "purchases",
+      "sales orders"
+    ],
+    "tags": [
+      "tenant_scoped",
+      "fact"
+    ],
+    "tenant_key": "warehouse.commerce.orders.tenant_id",
+    "version": 3
+  },
+  {
+    "access_scope": "commerce-analysts",
+    "approved_relationships": [
+      "commerce.orders_customers_asof@2"
+    ],
+    "business_description": "Customer attributes as of a point in time, including region.",
+    "description": "Slowly changing customer dimension with half-open validity intervals.",
+    "domain": "commerce",
+    "freshness_watermark": null,
+    "grain": [
+      "warehouse.commerce.customer_history.tenant_id",
+      "warehouse.commerce.customer_history.customer_id",
+      "warehouse.commerce.customer_history.valid_from"
+    ],
+    "id": "warehouse.commerce.customer_history",
+    "is_certified": true,
+    "key_evidence": "enforced",
+    "metric_refs": [],
+    "name": "customer_history",
+    "object_type": "table",
+    "owner": null,
+    "physical": {
+      "database": "warehouse",
+      "name": "customer_history",
+      "schema_name": "commerce"
+    },
+    "primary_key": [
+      "warehouse.commerce.customer_history.tenant_id",
+      "warehouse.commerce.customer_history.customer_id",
+      "warehouse.commerce.customer_history.valid_from"
+    ],
+    "prohibited_usages": [],
+    "publication_status": "approved",
+    "rule_refs": [
+      "security.tenant_scope@5"
+    ],
+    "snapshot_id": "local-001",
+    "source_hash": "25a7c60f91265425049a30053b4faec85a237f12dea9d37a39dc3c77cc6fbdb3",
+    "source_version": "2",
+    "synonyms": [
+      "customers",
+      "customer dimension",
+      "customer regions"
+    ],
+    "tags": [
+      "tenant_scoped",
+      "scd2",
+      "dimension"
+    ],
+    "tenant_key": "warehouse.commerce.customer_history.tenant_id",
+    "version": 2
+  },
+  {
+    "access_scope": "commerce-analysts",
+    "approved_relationships": [],
+    "business_description": "Line detail. Joining this to orders multiplies order rows.",
+    "description": "Order line items; one row per tenant, order and line.",
+    "domain": "commerce",
+    "freshness_watermark": null,
+    "grain": [
+      "warehouse.commerce.order_items.tenant_id",
+      "warehouse.commerce.order_items.order_id",
+      "warehouse.commerce.order_items.line_number"
+    ],
+    "id": "warehouse.commerce.order_items",
+    "is_certified": false,
+    "key_evidence": "enforced",
+    "metric_refs": [],
+    "name": "order_items",
+    "object_type": "table",
+    "owner": null,
+    "physical": {
+      "database": "warehouse",
+      "name": "order_items",
+      "schema_name": "commerce"
+    },
+    "primary_key": [],
+    "prohibited_usages": [
+      "sum_parent_order_amount_after_expansion"
+    ],
+    "publication_status": "approved",
+    "rule_refs": [
+      "security.tenant_scope@5",
+      "commerce.order_item_revenue_guard@2"
+    ],
+    "snapshot_id": "local-001",
+    "source_hash": "eb703d2ecb802f32f17c10db53185feb12a794e05e9984d4b3def0f17f66707f",
+    "source_version": "2",
+    "synonyms": [
+      "line items",
+      "order lines"
+    ],
+    "tags": [
+      "tenant_scoped",
+      "fact"
+    ],
+    "tenant_key": "warehouse.commerce.order_items.tenant_id",
+    "version": 2
+  },
+  {
+    "access_scope": "commerce-analysts",
+    "approved_relationships": [],
+    "business_description": "Product master data.",
+    "description": "Product master data.",
+    "domain": "commerce",
+    "freshness_watermark": null,
+    "grain": [
+      "warehouse.commerce.products.tenant_id",
+      "warehouse.commerce.products.id"
+    ],
+    "id": "warehouse.commerce.products",
+    "is_certified": false,
+    "key_evidence": "declared",
+    "metric_refs": [],
+    "name": "products",
+    "object_type": "table",
+    "owner": null,
+    "physical": {
+      "database": "warehouse",
+      "name": "products",
+      "schema_name": "commerce"
+    },
+    "primary_key": [],
+    "prohibited_usages": [],
+    "publication_status": "approved",
+    "rule_refs": [
+      "security.tenant_scope@5"
+    ],
+    "snapshot_id": "local-001",
+    "source_hash": "7f45adbf1cddc0c422819b0558c3a803030adff70a5873e236daa40dd3cbaa89",
+    "source_version": "1",
+    "synonyms": [
+      "catalog",
+      "items",
+      "skus"
+    ],
+    "tags": [
+      "tenant_scoped"
+    ],
+    "tenant_key": "warehouse.commerce.products.tenant_id",
+    "version": 1
+  },
+  {
+    "access_scope": "commerce-analysts",
+    "approved_relationships": [],
+    "business_description": "Bridge table mapping products to overlapping categories.",
+    "description": "Bridge table mapping products to overlapping categories.",
+    "domain": "commerce",
+    "freshness_watermark": null,
+    "grain": [
+      "warehouse.commerce.product_categories.tenant_id",
+      "warehouse.commerce.product_categories.id"
+    ],
+    "id": "warehouse.commerce.product_categories",
+    "is_certified": false,
+    "key_evidence": "declared",
+    "metric_refs": [],
+    "name": "product_categories",
+    "object_type": "table",
+    "owner": null,
+    "physical": {
+      "database": "warehouse",
+      "name": "product_categories",
+      "schema_name": "commerce"
+    },
+    "primary_key": [],
+    "prohibited_usages": [],
+    "publication_status": "approved",
+    "rule_refs": [
+      "security.tenant_scope@5"
+    ],
+    "snapshot_id": "local-001",
+    "source_hash": "69fbf7aa3df78730b5027c7ba7954dc7a5bd4708a0e3688235ef4214e5857efd",
+    "source_version": "1",
+    "synonyms": [
+      "category bridge"
+    ],
+    "tags": [
+      "tenant_scoped"
+    ],
+    "tenant_key": "warehouse.commerce.product_categories.tenant_id",
+    "version": 1
+  },
+  {
+    "access_scope": "commerce-analysts",
+    "approved_relationships": [],
+    "business_description": "Category lookup.",
+    "description": "Category lookup.",
+    "domain": "commerce",
+    "freshness_watermark": null,
+    "grain": [
+      "warehouse.commerce.categories.tenant_id",
+      "warehouse.commerce.categories.id"
+    ],
+    "id": "warehouse.commerce.categories",
+    "is_certified": false,
+    "key_evidence": "declared",
+    "metric_refs": [],
+    "name": "categories",
+    "object_type": "table",
+    "owner": null,
+    "physical": {
+      "database": "warehouse",
+      "name": "categories",
+      "schema_name": "commerce"
+    },
+    "primary_key": [],
+    "prohibited_usages": [],
+    "publication_status": "approved",
+    "rule_refs": [
+      "security.tenant_scope@5"
+    ],
+    "snapshot_id": "local-001",
+    "source_hash": "b3148ec38b12713d02c73f756185e20d573cd8a87f65ca0c47c9825885e27dbc",
+    "source_version": "1",
+    "synonyms": [
+      "product categories"
+    ],
+    "tags": [
+      "tenant_scoped"
+    ],
+    "tenant_key": "warehouse.commerce.categories.tenant_id",
+    "version": 1
+  },
+  {
+    "access_scope": "commerce-analysts",
+    "approved_relationships": [],
+    "business_description": "Shipment events with their own ship date.",
+    "description": "Shipment events with their own ship date.",
+    "domain": "commerce",
+    "freshness_watermark": null,
+    "grain": [
+      "warehouse.commerce.shipments.tenant_id",
+      "warehouse.commerce.shipments.id"
+    ],
+    "id": "warehouse.commerce.shipments",
+    "is_certified": false,
+    "key_evidence": "declared",
+    "metric_refs": [],
+    "name": "shipments",
+    "object_type": "table",
+    "owner": null,
+    "physical": {
+      "database": "warehouse",
+      "name": "shipments",
+      "schema_name": "commerce"
+    },
+    "primary_key": [],
+    "prohibited_usages": [],
+    "publication_status": "approved",
+    "rule_refs": [
+      "security.tenant_scope@5"
+    ],
+    "snapshot_id": "local-001",
+    "source_hash": "60ffde18901c1b49b183c5bae49d0a1555840cd99972c9faa7b5f7d458b03c86",
+    "source_version": "1",
+    "synonyms": [
+      "deliveries",
+      "shipping"
+    ],
+    "tags": [
+      "tenant_scoped"
+    ],
+    "tenant_key": "warehouse.commerce.shipments.tenant_id",
+    "version": 1
+  },
+  {
+    "access_scope": "commerce-analysts",
+    "approved_relationships": [],
+    "business_description": "Returned merchandise records.",
+    "description": "Returned merchandise records.",
+    "domain": "commerce",
+    "freshness_watermark": null,
+    "grain": [
+      "warehouse.commerce.returns.tenant_id",
+      "warehouse.commerce.returns.id"
+    ],
+    "id": "warehouse.commerce.returns",
+    "is_certified": false,
+    "key_evidence": "declared",
+    "metric_refs": [],
+    "name": "returns",
+    "object_type": "table",
+    "owner": null,
+    "physical": {
+      "database": "warehouse",
+      "name": "returns",
+      "schema_name": "commerce"
+    },
+    "primary_key": [],
+    "prohibited_usages": [],
+    "publication_status": "approved",
+    "rule_refs": [
+      "security.tenant_scope@5"
+    ],
+    "snapshot_id": "local-001",
+    "source_hash": "46ad14359c1c941a589478d813e9f484878b35cb01d27cea596b03409d232699",
+    "source_version": "1",
+    "synonyms": [
+      "rma",
+      "refunds"
+    ],
+    "tags": [
+      "tenant_scoped"
+    ],
+    "tenant_key": "warehouse.commerce.returns.tenant_id",
+    "version": 1
+  },
+  {
+    "access_scope": "support-analysts",
+    "approved_relationships": [],
+    "business_description": "Support tickets with their own opened_at event time.",
+    "description": "Support tickets with their own opened_at event time.",
+    "domain": "support",
+    "freshness_watermark": null,
+    "grain": [
+      "warehouse.support.tickets.tenant_id",
+      "warehouse.support.tickets.id"
+    ],
+    "id": "warehouse.support.tickets",
+    "is_certified": false,
+    "key_evidence": "declared",
+    "metric_refs": [],
+    "name": "tickets",
+    "object_type": "table",
+    "owner": null,
+    "physical": {
+      "database": "warehouse",
+      "name": "tickets",
+      "schema_name": "support"
+    },
+    "primary_key": [],
+    "prohibited_usages": [],
+    "publication_status": "approved",
+    "rule_refs": [
+      "security.tenant_scope@5"
+    ],
+    "snapshot_id": "local-001",
+    "source_hash": "943da2f0a39523aefbb74718f01f7a7508da5277222bbe699c57abe438c3cea5",
+    "source_version": "1",
+    "synonyms": [
+      "support tickets",
+      "cases"
+    ],
+    "tags": [
+      "tenant_scoped"
+    ],
+    "tenant_key": "warehouse.support.tickets.tenant_id",
+    "version": 1
+  },
+  {
+    "access_scope": "finance-analysts",
+    "approved_relationships": [],
+    "business_description": "Billing invoices. Invoice totals are not order Revenue.",
+    "description": "Billing invoices. Invoice totals are not order Revenue.",
+    "domain": "finance",
+    "freshness_watermark": null,
+    "grain": [
+      "warehouse.finance.invoices.tenant_id",
+      "warehouse.finance.invoices.id"
+    ],
+    "id": "warehouse.finance.invoices",
+    "is_certified": false,
+    "key_evidence": "declared",
+    "metric_refs": [],
+    "name": "invoices",
+    "object_type": "table",
+    "owner": null,
+    "physical": {
+      "database": "warehouse",
+      "name": "invoices",
+      "schema_name": "finance"
+    },
+    "primary_key": [],
+    "prohibited_usages": [],
+    "publication_status": "approved",
+    "rule_refs": [
+      "security.tenant_scope@5"
+    ],
+    "snapshot_id": "local-001",
+    "source_hash": "03326b1ddaf97cf5cf3d9219f614468a0e28aed3b52b1e71d2e80c7ad8644a50",
+    "source_version": "1",
+    "synonyms": [
+      "billing",
+      "invoice revenue",
+      "billed amounts"
+    ],
+    "tags": [
+      "tenant_scoped"
+    ],
+    "tenant_key": "warehouse.finance.invoices.tenant_id",
+    "version": 1
+  },
+  {
+    "access_scope": "finance-analysts",
+    "approved_relationships": [],
+    "business_description": "Received payments.",
+    "description": "Received payments.",
+    "domain": "finance",
+    "freshness_watermark": null,
+    "grain": [
+      "warehouse.finance.payments.tenant_id",
+      "warehouse.finance.payments.id"
+    ],
+    "id": "warehouse.finance.payments",
+    "is_certified": false,
+    "key_evidence": "declared",
+    "metric_refs": [],
+    "name": "payments",
+    "object_type": "table",
+    "owner": null,
+    "physical": {
+      "database": "warehouse",
+      "name": "payments",
+      "schema_name": "finance"
+    },
+    "primary_key": [],
+    "prohibited_usages": [],
+    "publication_status": "approved",
+    "rule_refs": [
+      "security.tenant_scope@5"
+    ],
+    "snapshot_id": "local-001",
+    "source_hash": "075f5e006ab646761a873662c62cb57774b7461953440061139e1193b410827f",
+    "source_version": "1",
+    "synonyms": [
+      "cash receipts",
+      "settlements"
+    ],
+    "tags": [
+      "tenant_scoped"
+    ],
+    "tenant_key": "warehouse.finance.payments.tenant_id",
+    "version": 1
+  },
+  {
+    "access_scope": "marketing-analysts",
+    "approved_relationships": [],
+    "business_description": "Marketing campaigns.",
+    "description": "Marketing campaigns.",
+    "domain": "marketing",
+    "freshness_watermark": null,
+    "grain": [
+      "warehouse.marketing.campaigns.tenant_id",
+      "warehouse.marketing.campaigns.id"
+    ],
+    "id": "warehouse.marketing.campaigns",
+    "is_certified": false,
+    "key_evidence": "declared",
+    "metric_refs": [],
+    "name": "campaigns",
+    "object_type": "table",
+    "owner": null,
+    "physical": {
+      "database": "warehouse",
+      "name": "campaigns",
+      "schema_name": "marketing"
+    },
+    "primary_key": [],
+    "prohibited_usages": [],
+    "publication_status": "approved",
+    "rule_refs": [
+      "security.tenant_scope@5"
+    ],
+    "snapshot_id": "local-001",
+    "source_hash": "ba96d0470b5391da401aa823087050340293ba54b93fd73dc07b993f45ad1328",
+    "source_version": "1",
+    "synonyms": [
+      "promotions",
+      "marketing spend"
+    ],
+    "tags": [
+      "tenant_scoped"
+    ],
+    "tenant_key": "warehouse.marketing.campaigns.tenant_id",
+    "version": 1
+  }
+]

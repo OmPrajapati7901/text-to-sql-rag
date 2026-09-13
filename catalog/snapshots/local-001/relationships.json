@@ -1,0 +1,84 @@
+[
+  {
+    "access_scope": "commerce-analysts",
+    "cardinality": "many_to_one",
+    "description": "Each order joins the customer version valid at its order time. Reusing this edge for a different event time is invalid.",
+    "domain": "commerce",
+    "id": "commerce.orders_customers_asof",
+    "is_temporal": true,
+    "join_type": "inner",
+    "left_table": "warehouse.commerce.orders",
+    "object_type": "relationship",
+    "owner": null,
+    "predicates": [
+      {
+        "left_column": "warehouse.commerce.orders.tenant_id",
+        "op": "eq",
+        "right_column": "warehouse.commerce.customer_history.tenant_id"
+      },
+      {
+        "left_column": "warehouse.commerce.orders.customer_id",
+        "op": "eq",
+        "right_column": "warehouse.commerce.customer_history.customer_id"
+      },
+      {
+        "left_column": "warehouse.commerce.orders.ordered_at",
+        "op": "gte",
+        "right_column": "warehouse.commerce.customer_history.valid_from"
+      },
+      {
+        "left_column": "warehouse.commerce.orders.ordered_at",
+        "op": "lt_or_null",
+        "right_column": "warehouse.commerce.customer_history.valid_to"
+      }
+    ],
+    "prohibited_usages": [],
+    "publication_status": "approved",
+    "requires_uniqueness_contract": true,
+    "right_table": "warehouse.commerce.customer_history",
+    "role": "purchasing_customer_at_order",
+    "snapshot_id": "local-001",
+    "source_hash": "cbc3287b3194492f8d2acd9a21adb1291619314c4ffc24dc6021b80fe55344f2",
+    "source_version": "2",
+    "temporal_fact_column": "warehouse.commerce.orders.ordered_at",
+    "uniqueness_contract_ref": "quality.customer_history_non_overlap@1",
+    "version": 2
+  },
+  {
+    "access_scope": "commerce-analysts",
+    "cardinality": "one_to_many",
+    "description": "One order has many lines. Expands order rows; never sum the order header amount across this edge.",
+    "domain": "commerce",
+    "id": "commerce.order_items",
+    "is_temporal": false,
+    "join_type": "inner",
+    "left_table": "warehouse.commerce.orders",
+    "object_type": "relationship",
+    "owner": null,
+    "predicates": [
+      {
+        "left_column": "warehouse.commerce.orders.tenant_id",
+        "op": "eq",
+        "right_column": "warehouse.commerce.order_items.tenant_id"
+      },
+      {
+        "left_column": "warehouse.commerce.orders.order_id",
+        "op": "eq",
+        "right_column": "warehouse.commerce.order_items.order_id"
+      }
+    ],
+    "prohibited_usages": [
+      "sum_parent_order_amount_after_expansion"
+    ],
+    "publication_status": "approved",
+    "requires_uniqueness_contract": false,
+    "right_table": "warehouse.commerce.order_items",
+    "role": "order_lines",
+    "snapshot_id": "local-001",
+    "source_hash": "1aa015af97e4f131644d3da25ab56bea54ca9a7a65d7d87def65e0aff7b94bc8",
+    "source_version": "2",
+    "temporal_fact_column": null,
+    "uniqueness_contract_ref": null,
+    "version": 2
+  }
+]

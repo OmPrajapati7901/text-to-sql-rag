@@ -1,0 +1,97 @@
+{
+  "synthetic": true,
+  "snapshot_id": "catalog-demo-42",
+  "source_document_count": 15,
+  "documents": [
+    {
+      "key": "text-to-sql/cards/catalog-demo-42/domains/commerce.md",
+      "object_id": "domain.commerce",
+      "source_version": "1",
+      "source_hash": "8cc226b18ef5f8cfb75f92453a47f49118381e64d552e8754b2a27eb3a7bc5bb"
+    },
+    {
+      "key": "text-to-sql/cards/catalog-demo-42/tables/orders.md",
+      "object_id": "warehouse.commerce.orders",
+      "source_version": "3",
+      "source_hash": "085f26908c987fc080be2380ca801d4e50e87483d373c7e4bd684414cf0c4419"
+    },
+    {
+      "key": "text-to-sql/cards/catalog-demo-42/tables/customers.md",
+      "object_id": "warehouse.commerce.customers",
+      "source_version": "2",
+      "source_hash": "e590f52f5bbb79f7e54767a0cd89db27f420f41330be18a67cafc1f7a2017d89"
+    },
+    {
+      "key": "text-to-sql/cards/catalog-demo-42/columns/order_amount_usd.md",
+      "object_id": "warehouse.commerce.orders.order_amount_usd",
+      "source_version": "3",
+      "source_hash": "53c6faf08f4bb8a1e0d149045cc131558eab640f11ccce510c58f2c54b5ffdea"
+    },
+    {
+      "key": "text-to-sql/cards/catalog-demo-42/columns/ordered_at.md",
+      "object_id": "warehouse.commerce.orders.ordered_at",
+      "source_version": "3",
+      "source_hash": "b27836466b90b7739444d6e1ae61045ff82592cd619ed58e0b9b79fac77caa1e"
+    },
+    {
+      "key": "text-to-sql/cards/catalog-demo-42/columns/order_status.md",
+      "object_id": "warehouse.commerce.orders.order_status",
+      "source_version": "3",
+      "source_hash": "3dcbe8387163a88c873234addb5cadabbc79b292125416218f21e7e193d283d4"
+    },
+    {
+      "key": "text-to-sql/cards/catalog-demo-42/columns/is_test.md",
+      "object_id": "warehouse.commerce.orders.is_test",
+      "source_version": "3",
+      "source_hash": "972c314d2baf5143e7861dfc6cf83e0058f9b5679485ac47ac4ced583296cd91"
+    },
+    {
+      "key": "text-to-sql/cards/catalog-demo-42/columns/refund_status.md",
+      "object_id": "warehouse.commerce.orders.refund_status",
+      "source_version": "3",
+      "source_hash": "36100fd1e515515c25baf6c538dd7742512860c5cdedfef3e2d5f5c6ff17427b"
+    },
+    {
+      "key": "text-to-sql/cards/catalog-demo-42/columns/region_name.md",
+      "object_id": "warehouse.commerce.customers.region_name",
+      "source_version": "2",
+      "source_hash": "840d1f6925424500709fed5cdd9e95bcf2212b4de639fb7964ca3c34b21d7f1d"
+    },
+    {
+      "key": "text-to-sql/cards/catalog-demo-42/columns/is_internal.md",
+      "object_id": "warehouse.commerce.customers.is_internal",
+      "source_version": "2",
+      "source_hash": "349f14fe19b696fe21245a18433af438e60255f16fc33731a22e4b3e22691da3"
+    },
+    {
+      "key": "text-to-sql/cards/catalog-demo-42/metrics/revenue-v7.md",
+      "object_id": "finance.revenue",
+      "source_version": "7",
+      "source_hash": "d61fe0fa6f927d0f566ea7225b77383652ac5699c87d6a05b763ba4ce1dd4815"
+    },
+    {
+      "key": "text-to-sql/cards/catalog-demo-42/rules/exclude-internal-customers-v2.md",
+      "object_id": "global.exclude_internal_customers",
+      "source_version": "2",
+      "source_hash": "3965e76c8ac289c9d0259deb4f23ff0f16e25e8df8bc2595b1736bd90b52c360"
+    },
+    {
+      "key": "text-to-sql/cards/catalog-demo-42/relationships/orders-customers-v2.md",
+      "object_id": "commerce.orders_customers",
+      "source_version": "2",
+      "source_hash": "f451b4a467d88e5a765be28d4dafc13c33f121e2ae42994e043c9b1516729217"
+    },
+    {
+      "key": "text-to-sql/cards/catalog-demo-42/glossary/revenue.md",
+      "object_id": "glossary.revenue",
+      "source_version": "1",
+      "source_hash": "365554b8bc583ca024caa44f5a931f777d404abb025cbc297868bf62e23e4242"
+    },
+    {
+      "key": "text-to-sql/prose/catalog-demo-42/revenue-methodology.md",
+      "object_id": "documentation.revenue_methodology",
+      "source_version": "1",
+      "source_hash": "2269b10de2ebe2ebc34eaad72576d300701c12c857219073d879d25599a88f1d"
+    }
+  ]
+}

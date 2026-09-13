@@ -1,0 +1,16 @@
+{
+  "metadataAttributes": {
+    "object_id": "warehouse.commerce.orders.refund_status",
+    "object_type": "column",
+    "domain": "commerce",
+    "tenant_id": "tenant-demo",
+    "access_scope": "finance-analysts-demo",
+    "snapshot_id": "catalog-demo-42",
+    "source_version": "3",
+    "publication_status": "approved",
+    "canonical_ref": "registry:warehouse.commerce.orders.refund_status@3",
+    "source_hash": "36100fd1e515515c25baf6c538dd7742512860c5cdedfef3e2d5f5c6ff17427b",
+    "language": "en",
+    "is_synthetic": true
+  }
+}

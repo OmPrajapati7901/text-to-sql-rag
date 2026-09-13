@@ -1,0 +1,62 @@
+[
+  {
+    "access_scope": "commerce-analysts",
+    "default_timezone": "UTC",
+    "description": "Orders, customers and the official Revenue metric.",
+    "domain": "commerce",
+    "id": "domain.commerce",
+    "name": "Commerce",
+    "object_type": "domain",
+    "owner": null,
+    "publication_status": "approved",
+    "snapshot_id": "local-001",
+    "source_hash": "4939eba0c6427c9f89fdfbdb286c1e00e488bb5e090001a147ca543371c255be",
+    "source_version": "1",
+    "version": 1
+  },
+  {
+    "access_scope": "finance-analysts",
+    "default_timezone": "UTC",
+    "description": "Invoicing and payments. Not the source of order Revenue.",
+    "domain": "finance",
+    "id": "domain.finance",
+    "name": "Finance",
+    "object_type": "domain",
+    "owner": null,
+    "publication_status": "approved",
+    "snapshot_id": "local-001",
+    "source_hash": "e43dd82813edd3830612802aecada644ecc59feeb0c18b7975421d7107ad506c",
+    "source_version": "1",
+    "version": 1
+  },
+  {
+    "access_scope": "support-analysts",
+    "default_timezone": "UTC",
+    "description": "Customer support tickets.",
+    "domain": "support",
+    "id": "domain.support",
+    "name": "Support",
+    "object_type": "domain",
+    "owner": null,
+    "publication_status": "approved",
+    "snapshot_id": "local-001",
+    "source_hash": "3e71c79b775136d1539f86072f716fad669509d19ec2f314539d768d71cfbf93",
+    "source_version": "1",
+    "version": 1
+  },
+  {
+    "access_scope": "marketing-analysts",
+    "default_timezone": "UTC",
+    "description": "Campaigns and attribution.",
+    "domain": "marketing",
+    "id": "domain.marketing",
+    "name": "Marketing",
+    "object_type": "domain",
+    "owner": null,
+    "publication_status": "approved",
+    "snapshot_id": "local-001",
+    "source_hash": "26272eb5f2dabb085007dea83639f8f01a14ea0a8dab54fd487ab19d06485040",
+    "source_version": "1",
+    "version": 1
+  }
+]

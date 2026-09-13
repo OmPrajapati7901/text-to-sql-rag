@@ -1,0 +1,38 @@
+[
+  {
+    "access_scope": "all",
+    "domain": "global",
+    "id": "values.order_status",
+    "is_complete": true,
+    "members": {
+      "cancelled": "cancelled",
+      "completed": "completed",
+      "pending": "pending"
+    },
+    "object_type": "value_set",
+    "owner": null,
+    "publication_status": "approved",
+    "snapshot_id": "local-001",
+    "source_hash": "7406610943fac8549482f2107038b7f92a5415c0813d2497b5a4456b8f036941",
+    "source_version": "2",
+    "version": 2
+  },
+  {
+    "access_scope": "all",
+    "domain": "global",
+    "id": "values.refund_status",
+    "is_complete": true,
+    "members": {
+      "fully_refunded": "fully_refunded",
+      "none": "none",
+      "partially_refunded": "partially_refunded"
+    },
+    "object_type": "value_set",
+    "owner": null,
+    "publication_status": "approved",
+    "snapshot_id": "local-001",
+    "source_hash": "35836f223f387d4c34b70bc97dffd35e83599bea38a42f6b1a84b3a9cd89f6e0",
+    "source_version": "1",
+    "version": 1
+  }
+]

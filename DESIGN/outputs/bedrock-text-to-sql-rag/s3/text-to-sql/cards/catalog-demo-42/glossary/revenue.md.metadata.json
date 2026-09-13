@@ -1,0 +1,16 @@
+{
+  "metadataAttributes": {
+    "object_id": "glossary.revenue",
+    "object_type": "glossary",
+    "domain": "commerce",
+    "tenant_id": "tenant-demo",
+    "access_scope": "finance-analysts-demo",
+    "snapshot_id": "catalog-demo-42",
+    "source_version": "1",
+    "publication_status": "approved",
+    "canonical_ref": "registry:glossary.revenue@1",
+    "source_hash": "365554b8bc583ca024caa44f5a931f777d404abb025cbc297868bf62e23e4242",
+    "language": "en",
+    "is_synthetic": true
+  }
+}
